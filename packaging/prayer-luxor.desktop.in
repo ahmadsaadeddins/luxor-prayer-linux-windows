@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Prayer Luxor
+Name[ar]=مواقيت الأقصر
+GenericName=Prayer Times Widget
+GenericName[ar]=ويدجت مواقيت الصلاة
+Comment=Luxor prayer times desktop widget
+Comment[ar]=عدّ تنازلي لمواقيت صلاة الأقصر
+Exec=@EXEC@
+Icon=@ICON@
+Terminal=false
+StartupNotify=false
+StartupWMClass=luxor-prayer
+Categories=Utility;Clock;
+Keywords=prayer;luxor;salah;athan;iqama;islam;صلاة;أقصر;

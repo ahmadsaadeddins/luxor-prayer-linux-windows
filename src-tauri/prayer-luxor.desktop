@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name={{name}}
+Name[ar]=مواقيت الأقصر
+GenericName=Prayer Times Widget
+GenericName[ar]=ويدجت مواقيت الصلاة
+Comment={{comment}}
+Comment[ar]=عدّ تنازلي لمواقيت صلاة الأقصر
+Exec={{exec}}
+Icon={{icon}}
+Terminal=false
+StartupNotify=false
+StartupWMClass={{exec}}
+Categories={{categories}}
+Keywords=prayer;luxor;salah;athan;iqama;islam;صلاة;أقصر;

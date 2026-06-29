@@ -1,0 +1,4 @@
+[[permission]]
+identifier = "allow-set-window-expanded"
+description = "Enables the set_window_expanded command."
+commands.allow = ["set_window_expanded"]
