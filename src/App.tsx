@@ -7,6 +7,7 @@ import {
 } from "@tauri-apps/api/window";
 import { WidgetFace } from "./components/WidgetFace";
 import { PrayerList } from "./components/PrayerList";
+import { Azkar } from "./components/Azkar";
 import { useSettings } from "./hooks/useSettings";
 import { useCountdown } from "./hooks/useCountdown";
 import { loadWindowPosition, saveWindowPosition } from "./utils/settings";
@@ -55,11 +56,14 @@ async function restorePosition() {
 
 function App() {
   const [expanded, setExpanded] = useState(false);
+  const [panel, setPanel] = useState<"prayers" | "azkar">("prayers");
   const { settings, update } = useSettings();
   const countdown = useCountdown(settings);
 
   const collapse = useCallback(() => setExpanded(false), []);
   const expand = useCallback(() => setExpanded(true), []);
+  const openAzkar = useCallback(() => setPanel("azkar"), []);
+  const openPrayers = useCallback(() => setPanel("prayers"), []);
 
   useEffect(() => {
     applyWindowSize(expanded);
@@ -94,13 +98,22 @@ function App() {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        if (expanded) collapse();
-        else if (isTauri()) void getCurrentWindow().hide();
+        if (expanded && panel === "azkar") {
+          setPanel("prayers");
+        } else if (expanded) {
+          collapse();
+        } else if (isTauri()) {
+          void getCurrentWindow().hide();
+        }
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [expanded, collapse]);
+  }, [expanded, panel, collapse]);
+
+  if (expanded && panel === "azkar") {
+    return <Azkar useArabicNumerals={settings.useArabicNumerals} onBack={openPrayers} />;
+  }
 
   if (expanded) {
     return (
@@ -108,6 +121,7 @@ function App() {
         settings={settings}
         onSettingsChange={update}
         onCollapse={collapse}
+        onOpenAzkar={openAzkar}
       />
     );
   }

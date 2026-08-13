@@ -229,3 +229,271 @@ body,
 .toggle input {
   accent-color: #4a9eff;
 }
+
+.panel-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-action {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: transparent;
+  color: #c8ccd2;
+  font-size: 13px;
+  font-family: inherit;
+  padding: 2px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.panel-action:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* Azkar panel */
+.azkar-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: rgba(22, 24, 30, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  direction: rtl;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  font-family: "Segoe UI", "Noto Naskh Arabic", "Arial", sans-serif;
+  color: #e8e8e8;
+}
+
+.azkar-title {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+}
+
+.azkar-nav {
+  border: none;
+  background: transparent;
+  color: #aaa;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.azkar-nav:hover {
+  color: #fff;
+}
+
+.azkar-tools {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.azkar-tool {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  background: transparent;
+  color: #e8e8e8;
+  font-size: 15px;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.azkar-tool:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.azkar-tool:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.azkar-font-label {
+  min-width: 28px;
+  text-align: center;
+  font-size: 13px;
+  color: #9aa0a8;
+}
+
+.azkar-progress {
+  text-align: center;
+  padding: 6px;
+  font-size: 12px;
+  color: #9aa0a8;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.azkar-tabs {
+  display: flex;
+}
+
+.azkar-tab {
+  flex: 1;
+  padding: 10px 8px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.azkar-tab.active {
+  color: #fff;
+  border-bottom-color: #4a9eff;
+  font-weight: 600;
+}
+
+.azkar-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.azkar-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.azkar-text {
+  font-size: 1em;
+  line-height: 1.6;
+  white-space: pre-line;
+  padding-bottom: 12px;
+  color: #f0f0f0;
+}
+
+.azkar-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 10px;
+}
+
+.azkar-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.azkar-counter-btn {
+  width: 44px;
+  height: 44px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  background: transparent;
+  color: #4a9eff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.azkar-counter-btn:hover:not(:disabled) {
+  background: rgba(74, 158, 255, 0.12);
+  border-color: #4a9eff;
+}
+
+.azkar-counter-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.azkar-counter-text {
+  flex: 1;
+  text-align: center;
+  font-size: 0.85em;
+  font-weight: bold;
+  padding: 0 12px;
+  color: #c8ccd2;
+}
+
+.azkar-empty {
+  text-align: center;
+  padding: 48px 24px;
+  color: #9aa0a8;
+}
+
+.azkar-empty .check {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  color: #4caf50;
+}
+
+.azkar-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 16px;
+}
+
+.azkar-dialog {
+  background: #1c1f27;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 320px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.azkar-dialog h2 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.azkar-dialog p {
+  margin-bottom: 16px;
+  line-height: 1.5;
+  font-size: 13px;
+  color: #c8ccd2;
+}
+
+.azkar-dialog-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.azkar-dialog-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.azkar-dialog-btn.primary {
+  background: #4a9eff;
+  color: #fff;
+}
+
+.azkar-dialog-btn.secondary {
+  background: transparent;
+  color: #4a9eff;
+}

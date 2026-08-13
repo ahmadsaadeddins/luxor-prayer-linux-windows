@@ -7,9 +7,10 @@ interface PrayerListProps {
   settings: AppSettings;
   onSettingsChange: (patch: Partial<AppSettings>) => void;
   onCollapse: () => void;
+  onOpenAzkar: () => void;
 }
 
-export function PrayerList({ settings, onSettingsChange, onCollapse }: PrayerListProps) {
+export function PrayerList({ settings, onSettingsChange, onCollapse, onOpenAzkar }: PrayerListProps) {
   const { today, todayPrayers, tomorrowPrayers } = todayAndTomorrow(settings.daylight);
   const dateStr = today.toLocaleDateString("ar-EG", {
     weekday: "long",
@@ -22,9 +23,14 @@ export function PrayerList({ settings, onSettingsChange, onCollapse }: PrayerLis
     <div className="prayer-list-panel">
       <div className="panel-header" data-tauri-drag-region>
         <span>مواقيت الأقصر</span>
-        <button type="button" className="panel-close" onClick={onCollapse} title="إغلاق">
-          ×
-        </button>
+        <div className="panel-header-actions">
+          <button type="button" className="panel-action" onClick={onOpenAzkar} title="الأذكار">
+            الأذكار
+          </button>
+          <button type="button" className="panel-close" onClick={onCollapse} title="إغلاق">
+            ×
+          </button>
+        </div>
       </div>
 
       <p className="panel-date">{dateStr}</p>
