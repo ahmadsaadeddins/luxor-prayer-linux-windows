@@ -8,6 +8,7 @@ import {
 import { WidgetFace } from "./components/WidgetFace";
 import { PrayerList } from "./components/PrayerList";
 import { Azkar } from "./components/Azkar";
+import { Timer } from "./components/Timer";
 import { useSettings } from "./hooks/useSettings";
 import { useCountdown } from "./hooks/useCountdown";
 import { loadWindowPosition, saveWindowPosition } from "./utils/settings";
@@ -56,7 +57,7 @@ async function restorePosition() {
 
 function App() {
   const [expanded, setExpanded] = useState(false);
-  const [panel, setPanel] = useState<"prayers" | "azkar">("prayers");
+  const [panel, setPanel] = useState<"prayers" | "azkar" | "timer">("prayers");
   const { settings, update } = useSettings();
   const countdown = useCountdown(settings);
 
@@ -64,6 +65,7 @@ function App() {
   const expand = useCallback(() => setExpanded(true), []);
   const openAzkar = useCallback(() => setPanel("azkar"), []);
   const openPrayers = useCallback(() => setPanel("prayers"), []);
+  const openTimer = useCallback(() => setPanel("timer"), []);
 
   useEffect(() => {
     applyWindowSize(expanded);
@@ -89,9 +91,19 @@ function App() {
     };
     window.addEventListener("luxor-hide-window", onHide);
 
+    const onTimerFinished = () => {
+      setPanel("timer");
+      setExpanded(true);
+      void win.show();
+      void win.unminimize();
+      void win.setFocus();
+    };
+    window.addEventListener("luxor-timer-finished", onTimerFinished);
+
     return () => {
       void unlistenMoved.then((fn) => fn());
       window.removeEventListener("luxor-hide-window", onHide);
+      window.removeEventListener("luxor-timer-finished", onTimerFinished);
     };
   }, []);
 
@@ -99,6 +111,8 @@ function App() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         if (expanded && panel === "azkar") {
+          setPanel("prayers");
+        } else if (expanded && panel === "timer") {
           setPanel("prayers");
         } else if (expanded) {
           collapse();
@@ -115,6 +129,10 @@ function App() {
     return <Azkar useArabicNumerals={settings.useArabicNumerals} onBack={openPrayers} />;
   }
 
+  if (expanded && panel === "timer") {
+    return <Timer useArabicNumerals={settings.useArabicNumerals} onBack={openPrayers} />;
+  }
+
   if (expanded) {
     return (
       <PrayerList
@@ -122,6 +140,7 @@ function App() {
         onSettingsChange={update}
         onCollapse={collapse}
         onOpenAzkar={openAzkar}
+        onOpenTimer={openTimer}
       />
     );
   }

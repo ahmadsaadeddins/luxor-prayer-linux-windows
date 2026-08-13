@@ -497,3 +497,150 @@ body,
   background: transparent;
   color: #4a9eff;
 }
+
+/* Timer panel */
+.timer-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: rgba(22, 24, 30, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  direction: rtl;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  font-family: "Segoe UI", "Noto Naskh Arabic", "Arial", sans-serif;
+  color: #e8e8e8;
+}
+
+.timer-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+}
+
+.timer-display {
+  font-size: 56px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.timer-progress {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.timer-progress-fill {
+  height: 100%;
+  background: #4a9eff;
+  transition: width 0.3s linear;
+}
+
+.timer-presets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.timer-preset {
+  padding: 8px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  background: transparent;
+  color: #c8ccd2;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.timer-preset:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.timer-preset:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.timer-preset-minus {
+  color: #ff8a80;
+  border-color: rgba(255, 107, 107, 0.3);
+}
+
+.timer-preset-minus:hover:not(:disabled) {
+  background: rgba(255, 107, 107, 0.12);
+  color: #ff6b6b;
+}
+
+.timer-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.timer-btn {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  background: transparent;
+  color: #e8e8e8;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.timer-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.timer-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.timer-btn-primary {
+  background: #4a9eff;
+  border-color: #4a9eff;
+  color: #fff;
+  font-weight: 600;
+}
+
+.timer-btn-primary:hover:not(:disabled) {
+  background: #3a8aef;
+}
+
+.timer-hint {
+  font-size: 11px;
+  color: #9aa0a8;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.timer-finished {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.timer-finished-icon {
+  font-size: 48px;
+}
+
+.timer-finished p {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ff6b6b;
+}
