@@ -7,6 +7,7 @@ export interface AzkarItem {
 export interface AzkarData {
   morning: AzkarItem[];
   evening: AzkarItem[];
+  myAzkar: AzkarItem[];
 }
 
 export const AZKAR_DATA: AzkarData = {
@@ -242,6 +243,13 @@ export const AZKAR_DATA: AzkarData = {
       id: 222,
       text: "اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبِيِّنَا مُحَمَّدٍ",
       count: 10,
+    },
+  ],
+  myAzkar: [
+    {
+      id: 301,
+      text: "اللهم إنك سلطت علينا عدواً بصيراً بعيوبنا، مطلعاً على عوراتنا، يرانا هو وقبيله من حيث لا نراه، اللهم فآيسه منا كما آيسته من رحمتك، وقنّطه منا كما قنّطه من عفوك، وباعد بيننا وبينه كما باعدت بينه وبين جنتك، إنك على كل شيء قدير.",
+      count: 3,
     },
   ],
 };

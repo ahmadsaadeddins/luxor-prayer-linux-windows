@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AZKAR_DATA, type AzkarItem } from "../utils/azkar-data";
 import { convertToArabic } from "../utils/format";
 
-type Tab = "morning" | "evening";
+type Tab = "morning" | "evening" | "myAzkar";
 
 interface AzkarProps {
   useArabicNumerals: boolean;
@@ -17,12 +17,14 @@ interface ItemState {
 const PROGRESS_KEYS: Record<Tab, string> = {
   morning: "luxor-azkar-progress-morning",
   evening: "luxor-azkar-progress-evening",
+  myAzkar: "luxor-azkar-progress-myazkar",
 };
 const FONT_SIZE_KEY = "luxor-azkar-font-size";
 
 const TAB_LABELS: Record<Tab, string> = {
   morning: "أذكار الصباح",
   evening: "أذكار المساء",
+  myAzkar: "أذكاري",
 };
 
 function escapeHtml(text: string): string {
@@ -234,7 +236,7 @@ export function Azkar({ useArabicNumerals, onBack }: AzkarProps) {
       </div>
 
       <div className="azkar-tabs">
-        {(["morning", "evening"] as Tab[]).map((t) => (
+        {(["morning", "evening", "myAzkar"] as Tab[]).map((t) => (
           <button
             key={t}
             type="button"

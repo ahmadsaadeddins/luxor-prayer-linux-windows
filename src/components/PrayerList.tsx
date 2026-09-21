@@ -9,6 +9,7 @@ interface PrayerListProps {
   onCollapse: () => void;
   onOpenAzkar: () => void;
   onOpenTimer: () => void;
+  onOpenStopwatch: () => void;
 }
 
 export function PrayerList({
@@ -17,6 +18,7 @@ export function PrayerList({
   onCollapse,
   onOpenAzkar,
   onOpenTimer,
+  onOpenStopwatch,
 }: PrayerListProps) {
   const { today, todayPrayers, tomorrowPrayers } = todayAndTomorrow(settings.daylight);
   const dateStr = today.toLocaleDateString("ar-EG", {
@@ -31,6 +33,9 @@ export function PrayerList({
       <div className="panel-header" data-tauri-drag-region>
         <span>مواقيت الأقصر</span>
         <div className="panel-header-actions">
+          <button type="button" className="panel-action" onClick={onOpenStopwatch} title="ساعة إيقاف">
+            ساعة
+          </button>
           <button type="button" className="panel-action" onClick={onOpenTimer} title="مؤقّت">
             مؤقّت
           </button>

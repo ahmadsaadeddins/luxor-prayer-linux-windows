@@ -9,6 +9,7 @@ import { WidgetFace } from "./components/WidgetFace";
 import { PrayerList } from "./components/PrayerList";
 import { Azkar } from "./components/Azkar";
 import { Timer } from "./components/Timer";
+import { Stopwatch } from "./components/Stopwatch";
 import { useSettings } from "./hooks/useSettings";
 import { useCountdown } from "./hooks/useCountdown";
 import { loadWindowPosition, saveWindowPosition } from "./utils/settings";
@@ -57,7 +58,7 @@ async function restorePosition() {
 
 function App() {
   const [expanded, setExpanded] = useState(false);
-  const [panel, setPanel] = useState<"prayers" | "azkar" | "timer">("prayers");
+  const [panel, setPanel] = useState<"prayers" | "azkar" | "timer" | "stopwatch">("prayers");
   const { settings, update } = useSettings();
   const countdown = useCountdown(settings);
 
@@ -66,6 +67,7 @@ function App() {
   const openAzkar = useCallback(() => setPanel("azkar"), []);
   const openPrayers = useCallback(() => setPanel("prayers"), []);
   const openTimer = useCallback(() => setPanel("timer"), []);
+  const openStopwatch = useCallback(() => setPanel("stopwatch"), []);
 
   useEffect(() => {
     applyWindowSize(expanded);
@@ -114,6 +116,8 @@ function App() {
           setPanel("prayers");
         } else if (expanded && panel === "timer") {
           setPanel("prayers");
+        } else if (expanded && panel === "stopwatch") {
+          setPanel("prayers");
         } else if (expanded) {
           collapse();
         } else if (isTauri()) {
@@ -133,6 +137,10 @@ function App() {
     return <Timer useArabicNumerals={settings.useArabicNumerals} onBack={openPrayers} />;
   }
 
+  if (expanded && panel === "stopwatch") {
+    return <Stopwatch useArabicNumerals={settings.useArabicNumerals} onBack={openPrayers} />;
+  }
+
   if (expanded) {
     return (
       <PrayerList
@@ -141,6 +149,7 @@ function App() {
         onCollapse={collapse}
         onOpenAzkar={openAzkar}
         onOpenTimer={openTimer}
+        onOpenStopwatch={openStopwatch}
       />
     );
   }
